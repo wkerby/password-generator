@@ -38,8 +38,16 @@ function generatePassword() {
 
   //add uppercase characters if user desires uppercase characters in password
   if (Object.values(userBools)[1][1]) {
-    for (var i = 0; i < characters.length; i++) {
-      characters.push(characters[i].toUpperCase())
+    //include logic for when user only desires uppercase characters
+    if (Object.values(userBools)[0][1]) { //if user also wants lowercase characters
+      for (var i = 0; i < characters.length; i++) {
+        characters.push(characters[i].toUpperCase());
+      }
+    }
+    else {
+      for (var i = 0; i < characters.length; i++) {
+        characters[i] = characters[i].toUpperCase()
+      }
     }
   }
   //add numbers if user desires numbers in password
@@ -51,9 +59,16 @@ function generatePassword() {
     characters.push(['&', '$', '!', '#', '%']);
   }
 
+  //generate password by appending one random character at a time
+  for (var i = 0; i < numchars; i++) {
+    password += characters[Math.floor(Math.random() * characters.length)]
+  }
+
+  return password;
 
 }
 
+console.log("Your new password is " + generatePassword())
 
 
 
