@@ -4,11 +4,11 @@ var password = "";
 var yesResponses = ["yes", "Yes", "YES", "y"];
 //create object in which all user prompted booleans will be captured
 var userBools = {
-  isLower: "",
-  isUpper: "",
-  isNumeric: "",
-  isSpecial: "",
-}
+  isLower: ["lowercase", ""],
+  isUpper: ["uppercase", ""],
+  isNumeric: ["numeric", ""],
+  isSpecial: ["special", ""],
+};
 
 //to what data type does js store prompt variables? going to assume it is string value and convert to string to int using parseInt
 var numchars = parseInt(prompt("Please provide password length (must be no fewer than 8 characters and no greater than 128 characters)."));
