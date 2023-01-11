@@ -32,7 +32,33 @@ if (Object.values(userBools)[2][1] == false && Object.values(userBools)[3][1] ==
   console.log("You must choose at least one character type");
 }
 
-function generatePassword(isLower, isUpper, isNumeric, isSpecial)
+//create a function that generates password based off of users password characteristic responses
+function generatePassword() {
+  var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+  //add uppercase characters if user desires uppercase characters in password
+  if (Object.values(userBools)[1][1]) {
+    for (var i = 0; i < characters.length; i++) {
+      characters.push(characters[i].toUpperCase())
+    }
+  }
+  //add numbers if user desires numbers in password
+  if (Object.values(userBools)[2][1]) {
+    characters.push(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]);
+  }
+  //add special characters if user desires special characters in password
+  if (Object.values(userBools)[3][1]) {
+    characters.push(['&', '$', '!', '#', '%']);
+  }
+
+
+}
+
+
+
+
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
