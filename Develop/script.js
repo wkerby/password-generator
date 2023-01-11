@@ -15,9 +15,6 @@ var numchars = parseInt(prompt("Please provide password length (must be no fewer
 if (numchars < 8 || numchars > 128) {
   console.log("Please enter an integer value between 8 and 128");
 }
-else {
-  console.log("pass")
-}
 
 //loop over all questions pertaining to password characteristics 
 for (var i = 0; i < Object.values(userBools).length; i++) {
@@ -30,11 +27,12 @@ for (var i = 0; i < Object.values(userBools).length; i++) {
   }
 }
 
-//validate that user has selected at least one character type
+//validate that user has opted for at least one character type
+if (Object.values(userBools)[2][1] == false && Object.values(userBools)[3][1] == false) {
+  console.log("You must choose at least one character type");
+}
 
-
-
-
+function generatePassword(isLower, isUpper, isNumeric, isSpecial)
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
