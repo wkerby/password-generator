@@ -65,23 +65,23 @@ function generatePassword() {
   var requirementsSatisfied = true; //validate that at least one character of each character type for which user has opted appears in the passcode before displaying 
   while (requirementsSatisfied) {
 
-    var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var characters = [];
+    var alphas = arrayRange(97, 122) //create list of unicode values for all lower case alphabetical characters
+    // var alphas = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     var charlen = characters.length; //get length of the characters array
 
-    //add uppercase characters if user desires uppercase characters in password
-    if (Object.values(userBools)[1][1]) {
-      //include logic for when user only desires uppercase characters
-      if (Object.values(userBools)[0][1]) { //if user also wants lowercase characters
-        for (var i = 0; i < charlen; i++) {
-          characters.push(characters[i].toUpperCase());
-        }
-      }
-      else {
-        for (var i = 0; i < characters.length; i++) {
-          characters[i] = characters[i].toUpperCase()
-        }
+    if (Object.values(userBools)[0][1]) { //if user opts for lowercase alphabetical characters
+      for (var i = 0; i < alphas.length; i++) {
+        characters.push(String.fromCharCode(parseInt(alphas[i])));
       }
     }
+
+    if (Object.values(userBools)[1][1]) { //if user opts for uppercase alphabetical characters
+      for (var i = 0; i < alphas.length; i++) {
+        characters.push(String.fromCharCode(parseInt(alphas[i])).toUpperCase());
+      }
+    }
+
     //add numbers if user desires numbers in password
     if (Object.values(userBools)[2][1]) {
       for (var i = 0; i < 10; i++) { //appends the numbers 1-9
