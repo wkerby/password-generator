@@ -1,9 +1,15 @@
 // Assignment code here
-
+// import { arrayRange } from '../html_css_java_practice/toolkit/toolkit.js';
+//create a function that returns an array of values from a designated stop and start point
+function arrayRange(start, stop) {
+  var array = [];
+  for (var i = start; i < stop + 1; i++) {
+    array.push(i);
+  }
+  return array;
+}
 //create a function that generates password based off of users password characteristic responses
 function generatePassword() {
-
-  var active = true; //create while loop that verifies that all characters that the user opted for are in the password
 
   //create password variable that function will return
   var password = "";
@@ -15,35 +21,49 @@ function generatePassword() {
   var userBools = { Lower: ["lowercase", ""], Upper: ["uppercase", ""], Numeric: ["numeric", ""], Special: ["special", ""], };
 
   //prompt user to provide password length
-  var numchars = parseInt(prompt("Please provide password length (must be no fewer than 8 characters and no greater than 128 characters)."));
 
-  //validate that user input is within required range of 8 and 128 characters
-  if (numchars < 8 || numchars > 128) {
-    return alert("Please enter an integer value between 8 and 128");
-  }
+  var charlenSatisfied = true;
+  while (charlenSatisfied) { //validate that user has entered a valid integer value between 8 and 128 for character length before continuing
 
-  else if (typeof (numchars.toString()) != "number") {
-    return alert("Please enter a valid integer value between 8 and 128");
-  }
+    var numchars = parseInt(prompt("Please provide password length (must be no fewer than 8 characters and no greater than 128 characters)."));
 
+    //validate that user input is within required range of 8 and 128 characters
+    if ((arrayRange(8, 128)).includes(numchars) == false) {
 
-  //ask all other questions pertaining to password characteristics 
-  for (var i = 0; i < Object.values(userBools).length; i++) {
-
-    if (yesResponses.includes(prompt("Include " + Object.values(userBools)[i][0] + " characters (y/n)?"))) { //consider using the confirm built-in function
-      Object.values(userBools)[i][1] = true;
+      alert("Please enter a valid integer between 8 and 128")
     }
+
     else {
-      Object.values(userBools)[i][1] = false;
+      charlenSatisfied = false;
     }
+
   }
 
-  while (active) { //validate that user has opted for at least one character type
+  //ask all other questions pertaining to password characteristics
+  var chartypesSatisfied = true; //validate that user has opted for at least one character type
+  while (chartypesSatisfied) {
+    for (var i = 0; i < Object.values(userBools).length; i++) {
 
+      if (yesResponses.includes(prompt("Include " + Object.values(userBools)[i][0] + " characters (y/n)?"))) { //consider using the confirm built-in function
+        Object.values(userBools)[i][1] = true;
+      }
+      else {
+        Object.values(userBools)[i][1] = false;
+      }
+
+    }
 
     if (Object.values(userBools)[0][1] == false && Object.values(userBools)[1][1] == false && Object.values(userBools)[2][1] == false && Object.values(userBools)[3][1] == false) {
-      return alert("You must choose at least one character type")
+      alert("You must choose at least one character type")
     }
+
+    else {
+      chartypesSatisfied = false;
+    }
+  }
+
+  var requirementsSatisfied = true; //validate that at least one character of each character type for which user has opted appears in the passcode before displaying 
+  while (requirementsSatisfied) {
 
     var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     var charlen = characters.length; //get length of the characters array
@@ -142,7 +162,7 @@ function generatePassword() {
     }
 
     if (verCounter == 4) {
-      active = false;
+      requirementsSatisfied = false;
     }
   }
 
