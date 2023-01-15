@@ -8,7 +8,7 @@ function generatePassword() {
   //create array to capture all variations of a True type response from user
   var yesResponses = ["yes", "Yes", "YES", "y"];
 
-  //create object in which all user prompted boolean responses will be captured
+  //create object in which all user prompted boolean responses will be stored
   var userBools = { Lower: ["lowercase", ""], Upper: ["uppercase", ""], Numeric: ["numeric", ""], Special: ["special", ""], };
 
   //prompt user to provide password length
@@ -36,12 +36,13 @@ function generatePassword() {
   }
 
   var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var charlen = characters.length;
 
   //add uppercase characters if user desires uppercase characters in password
   if (Object.values(userBools)[1][1]) {
     //include logic for when user only desires uppercase characters
     if (Object.values(userBools)[0][1]) { //if user also wants lowercase characters
-      for (var i = 0; i < characters.length; i++) {
+      for (var i = 0; i < charlen; i++) {
         characters.push(characters[i].toUpperCase());
       }
     }
@@ -53,17 +54,24 @@ function generatePassword() {
   }
   //add numbers if user desires numbers in password
   if (Object.values(userBools)[2][1]) {
-    characters.push(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]);
+    for (var i = 0; i < 10; i++) { //appends the numbers 1-9
+      characters.push(i);
+    }
   }
   //add special characters if user desires special characters in password
   if (Object.values(userBools)[3][1]) {
-    characters.push(['&', '$', '!', '#', '%']);
+    var specials = ['&', '$', '!', '#', '%'];
+    for (var i = 0; i < specials.length; i++) {
+      characters.push(specials[i]);
+    }
+
   }
 
   //generate password by appending one random character at a time
   for (var i = 0; i < numchars; i++) {
     password += characters[Math.floor(Math.random() * characters.length)]
   }
+  console.log(characters);
 
   return password;
 
