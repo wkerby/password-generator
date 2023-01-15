@@ -77,7 +77,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.value = password; //could this be fixed with a textContent = line?
 
 }
 
