@@ -19,10 +19,15 @@ function generatePassword() {
 
   //validate that user input is within required range of 8 and 128 characters
   if (numchars < 8 || numchars > 128) {
-    console.log("Please enter an integer value between 8 and 128");
+    return alert("Please enter an integer value between 8 and 128");
   }
 
-  //loop over all questions pertaining to password characteristics 
+  else if (typeof (numchars.toString()) != "number") {
+    return alert("Please enter a valid integer value between 8 and 128");
+  }
+
+
+  //ask all other questions pertaining to password characteristics 
   for (var i = 0; i < Object.values(userBools).length; i++) {
 
     if (yesResponses.includes(prompt("Include " + Object.values(userBools)[i][0] + " characters (y/n)?"))) { //consider using the confirm built-in function
@@ -36,8 +41,8 @@ function generatePassword() {
   while (active) { //validate that user has opted for at least one character type
 
 
-    if (Object.values(userBools)[0][1] == false && Object.values(userBools)[1][1] == false) {
-      console.log("You must choose at least one character type");
+    if (Object.values(userBools)[0][1] == false && Object.values(userBools)[1][1] == false && Object.values(userBools)[2][1] == false && Object.values(userBools)[3][1] == false) {
+      return alert("You must choose at least one character type")
     }
 
     var characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -73,8 +78,6 @@ function generatePassword() {
     }
 
     //generate password by appending one random character at a time
-    console.log("Character list:");
-    console.log(characters);
     for (var i = 0; i < numchars; i++) {
       password += characters[Math.floor(Math.random() * characters.length)]
     }
@@ -83,7 +86,6 @@ function generatePassword() {
     verCounter = 0
     charver = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     passArray = Array.from(password);
-    console.log(Array.from(passArray));
     if (Object.values(userBools)[0][1]) { //if user opts for lowercase characters
       for (var i = 0; i < charver.length; i++) {
         if (passArray.includes(charver[i])) {
@@ -115,11 +117,9 @@ function generatePassword() {
       for (var i = 0; i < 10; i++) {
         if (passArray.includes(i.toString())) {
           verCounter++;
-          console.log("PASS");
           break;
         }
         else {
-          console.log("FAIL");
         }
       }
     }
