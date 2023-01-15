@@ -1,5 +1,4 @@
 // Assignment code here
-//create password into which final password will be stored
 
 //create a function that generates password based off of users password characteristic responses
 function generatePassword() {
@@ -23,7 +22,7 @@ function generatePassword() {
   //loop over all questions pertaining to password characteristics 
   for (var i = 0; i < Object.values(userBools).length; i++) {
 
-    if (yesResponses.includes(prompt("Include " + Object.values(userBools)[i][0] + " characters (y/n)?"))) {
+    if (yesResponses.includes(prompt("Include " + Object.values(userBools)[i][0] + " characters (y/n)?"))) { //consider using the confirm built-in function
       Object.values(userBools)[i][1] = true;
     }
     else {
@@ -70,7 +69,7 @@ function generatePassword() {
 
 }
 
-console.log("Your new password is " + generatePassword())
+// console.log("Your new password is " + generatePassword())
 
 
 
