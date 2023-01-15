@@ -72,6 +72,8 @@ function generatePassword() {
     }
 
     //generate password by appending one random character at a time
+    console.log("Character list:");
+    console.log(characters);
     for (var i = 0; i < numchars; i++) {
       password += characters[Math.floor(Math.random() * characters.length)]
     }
@@ -80,6 +82,7 @@ function generatePassword() {
     verCounter = 0
     charver = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     passArray = Array.from(password);
+    console.log(Array.from(passArray));
     if (Object.values(userBools)[0][1]) { //if user opts for lowercase characters
       for (var i = 0; i < charver.length; i++) {
         if (passArray.includes(charver[i])) {
@@ -109,16 +112,19 @@ function generatePassword() {
 
     if (Object.values(userBools)[2][1]) { //if user opts for numbers
       for (var i = 0; i < 10; i++) {
-        if (passArray.includes(i)) {
+        if (passArray.includes(i.toString())) {
           verCounter++;
+          console.log("PASS");
           break;
+        }
+        else {
+          console.log("FAIL");
         }
       }
     }
 
     else {
       verCounter++;
-      console.log("BANANA!")
     }
 
     if (Object.values(userBools)[3][1]) { //if user opts for special characters
