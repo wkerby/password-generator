@@ -69,12 +69,6 @@ function generatePassword() {
 
 }
 
-// console.log("Your new password is " + generatePassword())
-
-
-
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
