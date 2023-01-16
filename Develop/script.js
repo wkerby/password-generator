@@ -1,13 +1,3 @@
-// Assignment code here
-// import { arrayRange } from '../html_css_java_practice/toolkit/toolkit.js';
-//create a function that returns an array of values from a designated stop and start point
-function arrayRange(start, stop) {
-  var array = [];
-  for (var i = start; i < stop + 1; i++) {
-    array.push(i);
-  }
-  return array;
-}
 //create a function that generates password based off of users password characteristic responses
 function generatePassword() {
 
@@ -48,7 +38,7 @@ function generatePassword() {
         Object.values(userBools)[i][1] = true;
       }
       else {
-        Object.values(userBools)[i][1] = false;
+        Object.values(userBools)[i][1] = false; //program assumes that any response other than the variation of yes responses recorded in the yesResponses array can be assumed to mean "no"
       }
 
     }
