@@ -1,3 +1,11 @@
+//create function to return array of values from a stop and start integer
+function arrayRange(start, stop) {
+  var array = [];
+  for (var i = start; i < stop + 1; i++) {
+    array.push(i);
+  }
+  return array;
+}
 //create a function that generates password based off of users password characteristic responses
 function generatePassword() {
 
