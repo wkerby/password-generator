@@ -27,6 +27,6 @@ Some useful pages I used to help me though the assignment include:
 
 ## Features
 
-- Fragmented links that direct end-user to the relevant portion of the webpage
-- Clickable image links that direct end-user to the refactored Horiseon website from challenge (and will direct him/her to other pertinent projects as class progresses)
-- style.css file compliant with semantic html and compliant with responsive web design
+- Interactive webpage for password generator that takes user input for character types and password length
+- Validation that notifies user if no character types were selected
+- Randomly generated password is displayed for user's convenience after it is generated
