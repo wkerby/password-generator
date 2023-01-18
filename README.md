@@ -17,6 +17,10 @@ Here you will find a link to the deployed webpage:
 
 *https://wkerby.github.io/password-generator/
 
+And belwo you will find a screenshot of the deployed webpage:
+
+![wkerby github io_password-generator_](https://user-images.githubusercontent.com/101428715/213156041-6c2aab53-577e-41f4-91a4-f40135bd31b0.png)
+
 ## Credits
 
 The portfolio website was completed in conjunction with the software development boot camp provided by the Georgia Tech professional development program.
